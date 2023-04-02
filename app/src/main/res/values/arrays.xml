@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pictures">
+        <item>Lutemon1</item>
+        <item>Lutemon2</item>
+        <item>Lutemon3</item>
+        <item>Lutemon4</item>
+        <item>Lutemon5</item>
+        <item>Lutemon6</item>
+        <item>Lutemon7</item>
+        <item>Lutemon8</item>
+        <item>Lutemon9</item>
+        <item>Lutemon10</item>
+        <item>Lutemon11</item>
+        <item>Lutemon12</item>
+        <item>Lutemon13</item>
+    </string-array>
+</resources>

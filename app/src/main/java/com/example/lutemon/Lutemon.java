@@ -36,8 +36,47 @@ public class Lutemon extends Storage {
         return 0;
     }
 
-    public int getNumberOfCreatedLutemons(){
+    public static int getNumberOfCreatedLutemons(){
         return idCounter;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMaxHealt() {
+        return maxHealt;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public LutemonStats getStats() {
+        return stats;
+    }
+
+    public int getPicture() {
+        return picture;
+    }
 }

@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="addLutemon"
         android:text="Lisää uusi Lutemon"
         app:layout_constraintEnd_toEndOf="@+id/rgLutemonColor"
         app:layout_constraintStart_toStartOf="@+id/rgLutemonColor"
-        app:layout_constraintTop_toBottomOf="@+id/txtLutemonName" />
+        app:layout_constraintTop_toBottomOf="@+id/sLutemonPicture" />
 
     <RadioGroup
         android:id="@+id/rgLutemonColor"
@@ -71,4 +72,13 @@
         app:layout_constraintEnd_toEndOf="@+id/rgLutemonColor"
         app:layout_constraintStart_toStartOf="@+id/rgLutemonColor"
         app:layout_constraintTop_toBottomOf="@+id/rgLutemonColor" />
+
+    <Spinner
+        android:id="@+id/sLutemonPicture"
+        android:layout_width="209dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtLutemonName"
+        app:layout_constraintStart_toStartOf="@+id/txtLutemonName"
+        app:layout_constraintTop_toBottomOf="@+id/txtLutemonName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

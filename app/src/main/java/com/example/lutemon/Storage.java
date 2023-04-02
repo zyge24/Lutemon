@@ -21,6 +21,10 @@ public class Storage {
 
     //tämä jäi kesken tarvitaan uuden lutemonin lisäämiseksi
     public static void addLutemon(Lutemon lutemon){
-        lutemons.entrySet(0, lutemon);
+        lutemons.put(Lutemon.getNumberOfCreatedLutemons(), lutemon);
+    }
+
+    public static HashMap<Integer, Lutemon> getLutemons() {
+        return lutemons;
     }
 }
