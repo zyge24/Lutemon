@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
 
     TextView name, attack, defence, health, experience;
-    ImageView picture;
+    ImageView picture, btnHome, btnTraining, btnFight;
 
     public LutemonViewHolder(View itemView) {
         super(itemView);
@@ -19,6 +19,9 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
         defence = itemView.findViewById(R.id.tvDefence);
         health = itemView.findViewById(R.id.tvHealth);
         experience = itemView.findViewById(R.id.tvExperience);
+        btnHome = itemView.findViewById(R.id.ivHome);
+        btnFight = itemView.findViewById(R.id.ivFight);
+        btnTraining = itemView.findViewById(R.id.ivTraining);
 
     }
 }

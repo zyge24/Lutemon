@@ -28,12 +28,18 @@ public class Lutemon extends Storage {
         idCounter++;
     }
 
-    public void defence(Lutemon lutemon){
-
+    public void defence(int enemyAttack){
+        int damage = Math.max((enemyAttack - defence), 0);
+        System.out.println("Tekee vahinkoa " + damage);
+        this.health =  health - damage;
+        if (health <= 0) {
+            System.out.println(name + " kuoli taistelussa");
+        }
     }
 
     public int attack(){
-        return 0;
+
+        return attack;
     }
 
     public static int getNumberOfCreatedLutemons(){

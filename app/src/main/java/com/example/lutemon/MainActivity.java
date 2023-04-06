@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, List_Lutemons.class);
         startActivity(intent);
     }
-  /* Ei vielä tiedossa, että mitä tulee tekemään
+
 
   public void switchToMoveLutemons(View view) {
-        Intent intent = new Intent(this, MoveLutemons.class);
+        Intent intent = new Intent(this, MoveLutemon.class);
         startActivity(intent);
-    }*/
+    }
 }

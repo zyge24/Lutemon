@@ -11,4 +11,10 @@ public class MoveLutemon extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_lutemon);
     }
+
+    protected void moveLutemon(Lutemon lutemon, int location){
+        if (location == 0){
+
+        }
+    }
 }

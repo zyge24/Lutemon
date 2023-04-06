@@ -19,16 +19,11 @@ public class AddNewLutemon extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_lutemon);
         storage = Storage.getInstance();
-
         name = findViewById(R.id.txtLutemonName);
         Spinner spinner = (Spinner) findViewById(R.id.sLutemonPicture);
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.pictures, android.R.layout.simple_spinner_item);
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinner.setAdapter(adapter);
     }
 
@@ -37,19 +32,19 @@ public class AddNewLutemon extends AppCompatActivity {
         picture  = getPictureId(view);
         switch (rgColor.getCheckedRadioButtonId()){
             case R.id.rbBlack:
-                storage.addLutemon(new Black(name.getText().toString(), picture));
+                Home.createLutemon(new Black(name.getText().toString(), picture));
                 break;
             case R.id.rbOrange:
-                storage.addLutemon(new Orange(name.getText().toString(), picture));
+                Home.createLutemon(new Orange(name.getText().toString(), picture));
                 break;
             case R.id.rbWhite:
-                storage.addLutemon(new White(name.getText().toString(), picture));
+                Home.createLutemon(new White(name.getText().toString(), picture));
                 break;
             case R.id.rbPink:
-                storage.addLutemon(new Pink(name.getText().toString(), picture));
+                Home.createLutemon(new Pink(name.getText().toString(), picture));
                 break;
             case R.id.rbGreen:
-                storage.addLutemon(new Green(name.getText().toString(), picture));
+                Home.createLutemon(new Green(name.getText().toString(), picture));
                 break;
 
         }
