@@ -4,7 +4,6 @@ package com.example.lutemon;
 import java.util.HashMap;
 
 public class Storage {
-    protected String name;
     protected static HashMap<Integer,Lutemon> lutemons = new HashMap<>();
 
     private static Storage storage = null;
@@ -32,5 +31,19 @@ public class Storage {
         Lutemon lutemon = from.get(id);
         to.put(id,lutemon);
         from.remove(id);
+    }
+
+    public static HashMap<Integer,Lutemon> getLutemonLocation(Integer id){
+        HashMap<Integer,Lutemon> lutemons = new HashMap<>();
+        if (Home.isLutemonAtHome(id)){
+            lutemons = Home.getLutemonsAtHome();
+        }
+        if (TrainingArea.isLutemonAtTrainingArea(id)){
+            lutemons = TrainingArea.getLutemonsAtTrainingArea();
+        }
+        if (BattleField.isLutemonAtBattleField(id)){
+            lutemons = BattleField.getLutemonsAtBattleField();
+        }
+        return lutemons;
     }
 }

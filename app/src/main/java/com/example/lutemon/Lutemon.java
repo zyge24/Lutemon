@@ -50,8 +50,28 @@ public class Lutemon extends Storage {
         return name;
     }
 
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
     public String getColor() {
         return color;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setMaxHealt(int maxHealt) {
+        this.maxHealt = maxHealt;
     }
 
     public int getAttack() {

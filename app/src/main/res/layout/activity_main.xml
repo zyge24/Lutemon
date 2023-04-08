@@ -23,21 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:onClick="switchToLutemonList"
-        android:text="Listaa Lutemonit"
+        android:text="Hallitse Lutemoneja"
         app:layout_constraintEnd_toEndOf="@+id/btnAddLutemon"
         app:layout_constraintStart_toStartOf="@+id/btnAddLutemon"
         app:layout_constraintTop_toBottomOf="@+id/btnAddLutemon" />
-
-    <Button
-        android:id="@+id/btnMoveLutemons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:onClick="switchToMoveLutemons"
-        android:text="Siirrä Lutemoneja"
-        app:layout_constraintEnd_toEndOf="@+id/btnListLutemons"
-        app:layout_constraintStart_toStartOf="@+id/btnListLutemons"
-        app:layout_constraintTop_toBottomOf="@+id/btnListLutemons" />
 
     <Button
         android:id="@+id/btnBattleArena"
@@ -46,8 +35,18 @@
         android:layout_marginTop="32dp"
         android:onClick="switchToBattleArena"
         android:text="Taisteluareenalle"
-        app:layout_constraintEnd_toEndOf="@+id/btnMoveLutemons"
-        app:layout_constraintStart_toStartOf="@+id/btnMoveLutemons"
-        app:layout_constraintTop_toBottomOf="@+id/btnMoveLutemons" />
+        app:layout_constraintEnd_toEndOf="@+id/btnListLutemons"
+        app:layout_constraintStart_toStartOf="@+id/btnListLutemons"
+        app:layout_constraintTop_toBottomOf="@+id/btnListLutemons" />
+
+    <Button
+        android:id="@+id/btnStatistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Tilastot"
+        app:layout_constraintEnd_toEndOf="@+id/btnBattleArena"
+        app:layout_constraintStart_toStartOf="@+id/btnBattleArena"
+        app:layout_constraintTop_toBottomOf="@+id/btnBattleArena" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
-
+Storage storage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        storage = Storage.getInstance();
     }
 
     public void switchToAddLutemon(View view) {

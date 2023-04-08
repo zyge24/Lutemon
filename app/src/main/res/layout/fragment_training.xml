@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".trainingFragment"/>
+    tools:context=".trainingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/sTrainLutemon"
+            android:layout_width="296dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnTraining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Treenaa lutemonia"
+            app:layout_constraintEnd_toEndOf="@+id/sTrainLutemon"
+            app:layout_constraintStart_toStartOf="@+id/sTrainLutemon"
+            app:layout_constraintTop_toBottomOf="@+id/sTrainLutemon" />
+
+        <TextView
+            android:id="@+id/tvTrainingEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTrainingResult"
+            app:layout_constraintStart_toStartOf="@+id/tvTrainingResult"
+            app:layout_constraintTop_toBottomOf="@+id/tvTrainingResult" />
+
+        <TextView
+            android:id="@+id/tvTrainingResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/btnTraining"
+            app:layout_constraintStart_toStartOf="@+id/btnTraining"
+            app:layout_constraintTop_toBottomOf="@+id/btnTraining" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

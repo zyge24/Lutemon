@@ -25,4 +25,12 @@ public class BattleField extends Storage {
         } while (a.getHealth() > 0 && b.getHealth() > 0);
 
     }
+
+    public static boolean isLutemonAtBattleField(Integer id){
+        return lutemonsAtBattleField.containsKey(id);
+    }
+
+    public static HashMap<Integer, Lutemon> getLutemonsAtBattleField() {
+        return lutemonsAtBattleField;
+    }
 }
