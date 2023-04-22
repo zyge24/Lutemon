@@ -6,10 +6,13 @@ public class Home extends Storage{
 
     protected static HashMap<Integer,Lutemon> lutemonsAtHome = new HashMap<>();
 
-    protected Integer experienceToDevelop = 2;
+    protected static Integer experienceToDevelop = 2;
 
     public Home() {
     }
+
+
+
     public static void createLutemon(Lutemon lutemon){
         lutemonsAtHome.put(Lutemon.getNumberOfCreatedLutemons(), lutemon);
         addLutemon(lutemon);
@@ -24,7 +27,7 @@ public class Home extends Storage{
         return lutemonsAtHome;
     }
 
-    public boolean useExperienceToHealth(Lutemon lutemon){
+    public static boolean useExperienceToHealth(Lutemon lutemon){
         if (lutemon.getExperience() >= experienceToDevelop){
             lutemon.setExperience((lutemon.getExperience()-2));
             lutemon.setMaxHealt(lutemon.getMaxHealt()+1);
@@ -32,7 +35,7 @@ public class Home extends Storage{
         }
         return false;
     }
-    public boolean useExperienceToAttack(Lutemon lutemon){
+    public static boolean useExperienceToAttack(Lutemon lutemon){
         if (lutemon.getExperience() >= experienceToDevelop){
             lutemon.setExperience((lutemon.getExperience()-2));
             lutemon.setAttack(lutemon.getAttack()+1);
@@ -40,7 +43,7 @@ public class Home extends Storage{
         }
         return false;
     }
-    public boolean useExperienceToDefence(Lutemon lutemon){
+    public static boolean useExperienceToDefence(Lutemon lutemon){
         if (lutemon.getExperience() >= experienceToDevelop){
             lutemon.setExperience((lutemon.getExperience()-2));
             lutemon.setDefence(lutemon.getDefence()+1);

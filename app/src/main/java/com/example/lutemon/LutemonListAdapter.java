@@ -12,14 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
     private Context context;
-    private ArrayList<Lutemon> lutemons = new ArrayList<>();
+    private HashMap<Integer, Lutemon> lutemons = new HashMap();
+    //private Home home = Home.getInstance();
+    private Storage storage = Storage.getInstance();
+    //private TrainingArea trainingArea = TrainingArea.getInstance();
+    //private BattleField battleField = BattleField.getInstance();
 
-    public LutemonListAdapter(Context context, ArrayList<Lutemon> lutemons) {
+    List<Integer> ids;
+
+    public LutemonListAdapter(Context context, HashMap<Integer,Lutemon> lutemons) {
         this.context = context;
         this.lutemons = lutemons;
+        ids = new ArrayList<Integer>(lutemons.keySet());
     }
 
 
@@ -32,42 +41,48 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
-        holder.picture.setImageResource(lutemons.get(position).getPicture());
-        holder.name.setText(lutemons.get(position).getName() + " (" + lutemons.get(position).getColor() + ")");
-        holder.attack.setText("Hyökkäys: " + String.valueOf(lutemons.get(position).getAttack()));
-        holder.defence.setText("Puolustus: " + String.valueOf(lutemons.get(position).getDefence()));
-        holder.health.setText("Elämäpisteet: " + String.valueOf(lutemons.get(position).getHealth()) + "/" + String.valueOf(lutemons.get(position).getMaxHealt()));
-        holder.experience.setText("Kokemus: " + String.valueOf(lutemons.get(position).getExperience()));
+        System.out.println(position);
+        int id = ids.get(position);
+        holder.picture.setImageResource(lutemons.get(id).getPicture());
+        holder.name.setText(lutemons.get(id).getName() + " (" + lutemons.get(id).getColor() + ")");
+        holder.attack.setText("Hyökkäys: " + String.valueOf(lutemons.get(id).getAttack()));
+        holder.defence.setText("Puolustus: " + String.valueOf(lutemons.get(id).getDefence()));
+        holder.health.setText("Elämäpisteet: " + String.valueOf(lutemons.get(id).getHealth()) + "/" + String.valueOf(lutemons.get(id).getMaxHealt()));
+        holder.experience.setText("Kokemus: " + String.valueOf(lutemons.get(id).getExperience()));
 
-        if(Home.isLutemonAtHome(lutemons.get(position).getId())){
+        if(Home.isLutemonAtHome(id)){
+
             holder.btnHome.setBackgroundColor(Color.GREEN);
         }
-        if(TrainingArea.isLutemonAtTrainingArea(lutemons.get(position).getId())){
+        if(TrainingArea.isLutemonAtTrainingArea(id)){
+
             holder.btnTraining.setBackgroundColor(Color.GREEN);
         }
-        if(BattleField.isLutemonAtBattleField(lutemons.get(position).getId())){
+        if(BattleField.isLutemonAtBattleField(id)){
+
             holder.btnFight.setBackgroundColor(Color.GREEN);
         }
 
         holder.btnHome.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
-            System.out.println(position);
             System.out.println(pos);
-            Storage.moveLutemon(lutemons.get(pos).getId(), Storage.getLutemonLocation(lutemons.get(pos).getId()), Home.getLutemonsAtHome());
+            Storage.moveLutemon(id, storage.getLutemonLocation(id), Home.getLutemonsAtHome());
             holder.btnHome.setBackgroundColor(Color.GREEN);
             holder.btnFight.setBackgroundColor(Color.TRANSPARENT);
             holder.btnTraining.setBackgroundColor(Color.TRANSPARENT);
         });
         holder.btnTraining.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
-            Storage.moveLutemon(lutemons.get(pos).getId(), Storage.getLutemonLocation(lutemons.get(pos).getId()), TrainingArea.getLutemonsAtTrainingArea());
+            System.out.println(pos);
+            Storage.moveLutemon(id, storage.getLutemonLocation(id), TrainingArea.getLutemonsAtTrainingArea());
             holder.btnTraining.setBackgroundColor(Color.GREEN);
             holder.btnFight.setBackgroundColor(Color.TRANSPARENT);
             holder.btnHome.setBackgroundColor(Color.TRANSPARENT);
         });
         holder.btnFight.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
-            Storage.moveLutemon(lutemons.get(pos).getId(), Storage.getLutemonLocation(lutemons.get(pos).getId()), BattleField.getLutemonsAtBattleField());
+            System.out.println(pos);
+            Storage.moveLutemon(id, storage.getLutemonLocation(id), BattleField.getLutemonsAtBattleField());
             holder.btnFight.setBackgroundColor(Color.GREEN);
             holder.btnHome.setBackgroundColor(Color.TRANSPARENT);
             holder.btnTraining.setBackgroundColor(Color.TRANSPARENT);

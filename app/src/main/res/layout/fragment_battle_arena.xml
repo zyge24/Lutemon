@@ -18,7 +18,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.example.lutemon.trainingFragment"
+        android:name="com.example.lutemon.TrainingFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

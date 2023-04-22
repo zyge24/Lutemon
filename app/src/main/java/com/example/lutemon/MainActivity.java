@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 Storage storage;
+Home home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -71,7 +71,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/ivFullHealth"
+            android:id="@+id/btnFullHealth"
             android:layout_width="49dp"
             android:layout_height="44dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -102,21 +102,21 @@
             app:layout_constraintTop_toBottomOf="@+id/tvUseExp">
 
             <ImageView
-                android:id="@+id/ivAttack"
+                android:id="@+id/btnAttack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:src="@drawable/attack" />
 
             <ImageView
-                android:id="@+id/ivDefence"
+                android:id="@+id/btnDefence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:src="@drawable/defence" />
 
             <ImageView
-                android:id="@+id/ivHealth"
+                android:id="@+id/btnHealth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

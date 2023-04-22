@@ -28,9 +28,10 @@ public class Storage {
     }
 
     public static void moveLutemon(Integer id, HashMap<Integer, Lutemon> from, HashMap<Integer, Lutemon> to){
+        if(from != to){
         Lutemon lutemon = from.get(id);
         to.put(id,lutemon);
-        from.remove(id);
+        from.remove(id);}
     }
 
     public static HashMap<Integer,Lutemon> getLutemonLocation(Integer id){

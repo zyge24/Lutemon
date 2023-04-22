@@ -9,13 +9,13 @@ public class TrainingArea extends Storage {
 
     public TrainingArea() {
     }
-    public ArrayList<Integer> train(Lutemon lutemon){
+    public static ArrayList<Integer> train(Lutemon lutemon){
         Integer dice1 = (int)(Math.random()*6)+1;
         Integer dice2 = (int)(Math.random()*6)+1;
         Integer trainerDice1 = (int)(Math.random()*6)+1;
         Integer trainerDice2 = (int)(Math.random()*6)+1;
         Integer success = 0;
-        if ((trainerDice2+trainerDice1) >= (dice1+dice2)){
+        if ((trainerDice2+trainerDice1) > (dice1+dice2)){
             lutemon.setExperience((lutemon.getExperience()+1));
             success = 1;
         }

@@ -30,7 +30,7 @@ public class Lutemon extends Storage {
 
     public void defence(int enemyAttack){
         int damage = Math.max((enemyAttack - defence), 0);
-        System.out.println("Tekee vahinkoa " + damage);
+        System.out.println(name + "Tekee vahinkoa " + damage);
         this.health =  health - damage;
         if (health <= 0) {
             System.out.println(name + " kuoli taistelussa");
@@ -42,7 +42,7 @@ public class Lutemon extends Storage {
         return attack;
     }
 
-    public static int getNumberOfCreatedLutemons(){
+    public static Integer getNumberOfCreatedLutemons(){
         return idCounter;
     }
 
@@ -105,4 +105,9 @@ public class Lutemon extends Storage {
     public int getPicture() {
         return picture;
     }
+
+    public void setFullHealth(){this.health=getMaxHealt();}
+
+
+
 }

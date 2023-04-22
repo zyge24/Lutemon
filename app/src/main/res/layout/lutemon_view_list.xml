@@ -82,6 +82,7 @@
                 android:id="@+id/ivHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:layout_margin="5dp"
                 android:src="@drawable/home" />
 
@@ -89,6 +90,7 @@
                 android:id="@+id/ivTraining"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:layout_margin="5dp"
                 android:src="@drawable/training" />
 
@@ -96,6 +98,7 @@
                 android:id="@+id/ivFight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:layout_margin="5dp"
                 android:src="@drawable/fight" />
         </LinearLayout>

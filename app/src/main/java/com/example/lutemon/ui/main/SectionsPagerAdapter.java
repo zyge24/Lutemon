@@ -12,6 +12,7 @@ import com.example.lutemon.BattleFieldFragment;
 import com.example.lutemon.GraveyardFragment;
 import com.example.lutemon.HomeFragment;
 import com.example.lutemon.R;
+import com.example.lutemon.TrainingFragment;
 
 import java.util.ArrayList;
 
@@ -30,10 +31,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
-        fragments.add(HomeFragment.newInstance("0","1"));
-        fragments.add(GraveyardFragment.newInstance("2","3"));
-        fragments.add(BattleFieldFragment.newInstance("4","5"));
-        fragments.add(GraveyardFragment.newInstance("6","7"));
 
     }
 
@@ -41,7 +38,19 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return fragments.get(position);
+       // return fragments.get(position);
+        switch (position){
+            case 0:
+                return new HomeFragment();
+            case 1:
+                return new TrainingFragment();
+            case 2:
+                return new BattleFieldFragment();
+            case 4:
+                return new GraveyardFragment();
+            default:
+                return new HomeFragment();
+        }
     }
 
     @Nullable
@@ -52,7 +61,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return fragments.size();
+        return 4;
     }
 }
