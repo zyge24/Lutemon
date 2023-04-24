@@ -1,14 +1,21 @@
 package com.example.lutemon;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Storage {
     protected static HashMap<Integer,Lutemon> lutemons = new HashMap<>();
 
-    private static Storage storage = null;
-
+    private static Storage storage;
+    private static TrainingArea trainingArea= new TrainingArea();
+    private static BattleField battleField= new BattleField();
+    private static Home home= new Home();
+    private static Graveyard graveyard= new Graveyard();
     protected Storage() {
+
     }
 
     public static Storage getInstance() {
@@ -18,33 +25,69 @@ public class Storage {
         return storage;
     }
 
-
-    public static void addLutemon(Lutemon lutemon){
-        lutemons.put(Lutemon.getNumberOfCreatedLutemons(), lutemon);
+    public TrainingArea getTrainingArea() {
+        return trainingArea;
     }
 
-    public static HashMap<Integer, Lutemon> getLutemons() {
+    public BattleField getBattleField() {
+        return battleField;
+    }
+
+    public Home getHome() {
+        return home;
+    }
+
+    public Graveyard getGraveyard() {
+        return graveyard;
+    }
+
+    public void addLutemon(Lutemon lutemon){
+        lutemons.put(lutemon.getId(), lutemon);
+    }
+
+    public HashMap<Integer, Lutemon> getLutemons() {
         return lutemons;
     }
 
-    public static void moveLutemon(Integer id, HashMap<Integer, Lutemon> from, HashMap<Integer, Lutemon> to){
+    public void moveLutemon(Integer id, Storage from, Storage to){
         if(from != to){
-        Lutemon lutemon = from.get(id);
-        to.put(id,lutemon);
-        from.remove(id);}
+        Lutemon lutemon = lutemons.get(id);
+        to.add(lutemon);
+        from.removeLutemon(id);}
     }
 
-    public static HashMap<Integer,Lutemon> getLutemonLocation(Integer id){
-        HashMap<Integer,Lutemon> lutemons = new HashMap<>();
-        if (Home.isLutemonAtHome(id)){
-            lutemons = Home.getLutemonsAtHome();
+    public Storage getLutemonLocation(Integer id){
+        Storage lutemons = null;
+        if (home.isLutemonAtHome(id)){
+            lutemons = home;
         }
-        if (TrainingArea.isLutemonAtTrainingArea(id)){
-            lutemons = TrainingArea.getLutemonsAtTrainingArea();
+        if (trainingArea.isLutemonAtTrainingArea(id)){
+            lutemons = trainingArea;
         }
-        if (BattleField.isLutemonAtBattleField(id)){
-            lutemons = BattleField.getLutemonsAtBattleField();
+        if (battleField.isLutemonAtBattleField(id)){
+            lutemons = battleField;
+        }
+        if (graveyard.isLutemonAtGraveyard(id)){
+            lutemons= graveyard;
         }
         return lutemons;
+    }
+
+    public void add(Lutemon lutemon){
+        lutemons.put(lutemon.getId(), lutemon);
+    }
+    public void removeLutemon(Integer id){
+        lutemons.remove(id);
+    }
+
+    public HashMap<Integer,Lutemon> getAliveLutemons(){
+        List<Integer> dead = new ArrayList<Integer>(graveyard.getLutemonsAtGraveyard().keySet());
+        HashMap<Integer,Lutemon> result = new HashMap<>();
+        for (Map.Entry<Integer,Lutemon> all : lutemons.entrySet()){
+            if (!dead.contains(all.getKey())) {
+                result.put(all.getKey(),all.getValue());
+            }
+        }
+        return result;
     }
 }

@@ -9,7 +9,6 @@ import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 Storage storage;
-Home home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +28,10 @@ Home home;
         Intent intent = new Intent(this, List_Lutemons.class);
         startActivity(intent);
     }
-
-
-  public void switchToMoveLutemons(View view) {
-        Intent intent = new Intent(this, MoveLutemon.class);
+    public void switchToStats(View view) {
+        Intent intent = new Intent(this, Stats.class);
         startActivity(intent);
     }
+
+
 }

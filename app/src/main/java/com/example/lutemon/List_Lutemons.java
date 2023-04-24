@@ -22,7 +22,7 @@ public class List_Lutemons extends AppCompatActivity {
         setContentView(R.layout.activity_list_lutemons);
 
         storage = Storage.getInstance();
-        lutemons = storage.getLutemons();
+        lutemons = storage.getAliveLutemons();
         lutemonsArray = new ArrayList<>(lutemons.values());
 
         recyclerView = findViewById(R.id.rvLutemonList);

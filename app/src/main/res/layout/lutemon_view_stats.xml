@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="145dp"
     android:layout_margin="5dp"
     android:layout_marginTop="5dp"
     android:background="@drawable/gradient">
@@ -33,86 +33,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="Lutti Lutemon"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvAttack"
+                android:id="@+id/tvAttackStats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Hyökkäys: 00" />
+
+                android:text="Tehty vahinko: 00" />
 
             <TextView
-                android:id="@+id/tvDefence"
+                android:id="@+id/tvDamageStats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Puolustus: 00" />
+
+                android:text="Koettu vahinko: 00" />
 
             <TextView
-                android:id="@+id/tvHealth"
+                android:id="@+id/tvKills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Elämäpisteet: 00/00" />
+
+                android:text="Tapot: 00" />
 
             <TextView
-                android:id="@+id/tvExperience"
+                android:id="@+id/tvDeath"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Kokemus: 00" />
+
+                android:text="Kuolemat: 00" />
+
+            <TextView
+                android:id="@+id/tvMaxHit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Maksimilyönti:" />
+
+            <TextView
+                android:id="@+id/tvTraining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Treenikerrat:" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/ivHome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:src="@drawable/home" />
-
-            <ImageView
-                android:id="@+id/ivTraining"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:src="@drawable/training" />
-
-            <ImageView
-                android:id="@+id/ivFight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:src="@drawable/fight" />
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

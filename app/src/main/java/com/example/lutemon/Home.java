@@ -2,9 +2,9 @@ package com.example.lutemon;
 
 import java.util.HashMap;
 
-public class Home extends Storage{
+public class Home  extends Storage {
 
-    protected static HashMap<Integer,Lutemon> lutemonsAtHome = new HashMap<>();
+    protected HashMap<Integer,Lutemon> lutemonsAtHome  = new HashMap<>();;
 
     protected static Integer experienceToDevelop = 2;
 
@@ -13,21 +13,28 @@ public class Home extends Storage{
 
 
 
-    public static void createLutemon(Lutemon lutemon){
-        lutemonsAtHome.put(Lutemon.getNumberOfCreatedLutemons(), lutemon);
-        addLutemon(lutemon);
+    public void createLutemon(Lutemon lutemon){
+        lutemonsAtHome.put(lutemon.getId(), lutemon);
+        Storage.getInstance().addLutemon(lutemon);
 
     }
 
-    public static boolean isLutemonAtHome(Integer id){
+    public boolean isLutemonAtHome(Integer id){
         return lutemonsAtHome.containsKey(id);
     }
 
-    public static HashMap<Integer, Lutemon> getLutemonsAtHome() {
+    public HashMap<Integer, Lutemon> getLutemonsAtHome() {
         return lutemonsAtHome;
     }
 
-    public static boolean useExperienceToHealth(Lutemon lutemon){
+    public void addLutemon (Lutemon lutemon){
+        lutemonsAtHome.put(lutemon.getId(), lutemon);
+    }
+    public void removeLutemon(Integer id){
+        lutemonsAtHome.remove(id);
+    }
+
+    public boolean useExperienceToHealth(Lutemon lutemon){
         if (lutemon.getExperience() >= experienceToDevelop){
             lutemon.setExperience((lutemon.getExperience()-2));
             lutemon.setMaxHealt(lutemon.getMaxHealt()+1);
@@ -35,7 +42,7 @@ public class Home extends Storage{
         }
         return false;
     }
-    public static boolean useExperienceToAttack(Lutemon lutemon){
+    public boolean useExperienceToAttack(Lutemon lutemon){
         if (lutemon.getExperience() >= experienceToDevelop){
             lutemon.setExperience((lutemon.getExperience()-2));
             lutemon.setAttack(lutemon.getAttack()+1);
@@ -43,7 +50,7 @@ public class Home extends Storage{
         }
         return false;
     }
-    public static boolean useExperienceToDefence(Lutemon lutemon){
+    public boolean useExperienceToDefence(Lutemon lutemon){
         if (lutemon.getExperience() >= experienceToDevelop){
             lutemon.setExperience((lutemon.getExperience()-2));
             lutemon.setDefence(lutemon.getDefence()+1);

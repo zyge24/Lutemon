@@ -26,6 +26,7 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewHolder> {
     }
     public void onBindViewHolder(HomeViewHolder holder, int position){
         int id = ids.get(position);
+        Home home = Storage.getInstance().getHome();
         holder.picture.setImageResource(lutemons.get(id).getPicture());
         holder.name.setText(lutemons.get(id).getName() + " (" + lutemons.get(id).getColor() + ")");
         holder.attack.setText("Hyökkäys: " + String.valueOf(lutemons.get(id).getAttack()));
@@ -38,16 +39,16 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewHolder> {
             notifyDataSetChanged();
         });
         holder.btnAttack.setOnClickListener(view -> {
-            Home.useExperienceToAttack(lutemons.get(id));
+            home.useExperienceToAttack(lutemons.get(id));
             notifyDataSetChanged();
         });
         holder.btnDefence.setOnClickListener(view -> {
-            Home.useExperienceToDefence(lutemons.get(id));
+            home.useExperienceToDefence(lutemons.get(id));
             notifyDataSetChanged();
 
         });
         holder.btnHealth.setOnClickListener(view -> {
-            Home.useExperienceToHealth(lutemons.get(id));
+            home.useExperienceToHealth(lutemons.get(id));
             notifyDataSetChanged();
         });
     }

@@ -53,5 +53,10 @@ public class SpinnerAdapter extends BaseAdapter implements android.widget.Spinne
 
         return convertView;
     }
+
+    public void setLutemons(HashMap<Integer, Lutemon> lutemons) {
+        this.lutemons = lutemons;
+        ids = new ArrayList<Integer>(lutemons.keySet());
+    }
 }
 

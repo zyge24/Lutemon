@@ -28,23 +28,24 @@ public class AddNewLutemon extends AppCompatActivity {
     }
 
     public void addLutemon(View view){
+        Home home = Storage.getInstance().getHome();
         RadioGroup rgColor = findViewById(R.id.rgLutemonColor);
         picture  = getPictureId(view);
         switch (rgColor.getCheckedRadioButtonId()){
             case R.id.rbBlack:
-                Home.createLutemon(new Black(name.getText().toString(), picture));
+                home.createLutemon(new Black(name.getText().toString(), picture));
                 break;
             case R.id.rbOrange:
-                Home.createLutemon(new Orange(name.getText().toString(), picture));
+                home.createLutemon(new Orange(name.getText().toString(), picture));
                 break;
             case R.id.rbWhite:
-                Home.createLutemon(new White(name.getText().toString(), picture));
+                home.createLutemon(new White(name.getText().toString(), picture));
                 break;
             case R.id.rbPink:
-                Home.createLutemon(new Pink(name.getText().toString(), picture));
+                home.createLutemon(new Pink(name.getText().toString(), picture));
                 break;
             case R.id.rbGreen:
-                Home.createLutemon(new Green(name.getText().toString(), picture));
+                home.createLutemon(new Green(name.getText().toString(), picture));
                 break;
 
         }

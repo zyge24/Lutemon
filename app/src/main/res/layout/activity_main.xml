@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="switchToStats"
         android:text="Tilastot"
         app:layout_constraintEnd_toEndOf="@+id/btnBattleArena"
         app:layout_constraintStart_toStartOf="@+id/btnBattleArena"

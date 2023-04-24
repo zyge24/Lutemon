@@ -12,13 +12,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link BattleFieldFragment#newInstance} factory method to
- * create an instance of this fragment.
+
  */
 public class BattleFieldFragment extends Fragment {
 
@@ -50,7 +48,8 @@ public class BattleFieldFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_battle_field, container, false);
-        lutemons = BattleField.getLutemonsAtBattleField();
+        BattleField battleField = Storage.getInstance().getBattleField();
+        lutemons = battleField.getLutemonsAtBattleField();
         SpinnerAdapter adapter = new SpinnerAdapter(getContext(), lutemons);
         tvResult = view.findViewById(R.id.tvFightResult);
         btnFight = view.findViewById(R.id.btnFight);
@@ -59,12 +58,23 @@ public class BattleFieldFragment extends Fragment {
         sFighter2 = view.findViewById(R.id.sFighter2);
         sFighter2.setAdapter(adapter);
 
-        btnFight.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        btnFight.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Lutemon lutemon1 = (Lutemon) sFighter1.getSelectedItem();
                 Lutemon lutemon2 = (Lutemon) sFighter2.getSelectedItem();
-                String winner = BattleField.fight(lutemon1, lutemon2);
-                tvResult.setText("Voittaja: "+ winner);
+                if (lutemon1 == lutemon2) {
+                    tvResult.setText("Valitse uudelleen, lutemon ei voi taistella itseään vastaan");
+                } else {
+                    String winner = BattleField.fight(lutemon1, lutemon2);
+                    tvResult.setText("Voittaja: " + winner);
+                    SpinnerAdapter adapterUpdate1 = (SpinnerAdapter) sFighter1.getAdapter();
+                    SpinnerAdapter adapterUpdate2 = (SpinnerAdapter) sFighter2.getAdapter();
+                    lutemons = battleField.getLutemonsAtBattleField();
+                    adapterUpdate1.setLutemons(lutemons);
+                    adapterUpdate2.setLutemons(lutemons);
+                    adapterUpdate1.notifyDataSetChanged();
+                    adapterUpdate2.notifyDataSetChanged();
+                }
             }
         });
         return view;

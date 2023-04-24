@@ -46,7 +46,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
                 return new TrainingFragment();
             case 2:
                 return new BattleFieldFragment();
-            case 4:
+            case 3:
                 return new GraveyardFragment();
             default:
                 return new HomeFragment();

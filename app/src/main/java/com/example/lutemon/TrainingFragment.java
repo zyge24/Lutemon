@@ -50,7 +50,8 @@ public class TrainingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_training, container, false);
-        lutemons = TrainingArea.getLutemonsAtTrainingArea();
+        TrainingArea trainingArea =Storage.getInstance().getTrainingArea();
+        lutemons = trainingArea.getLutemonsAtTrainingArea();
         SpinnerAdapter adapter = new SpinnerAdapter(getContext(), lutemons);
         btnTrain = view.findViewById(R.id.btnTraining);
         trainingEvent = view.findViewById(R.id.tvTrainingEvents);
@@ -61,7 +62,7 @@ public class TrainingFragment extends Fragment {
         btnTrain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Lutemon lutemon = (Lutemon) sLutemon.getSelectedItem();
-                ArrayList<Integer> result = TrainingArea.train(lutemon);
+                ArrayList<Integer> result = trainingArea.train(lutemon);
                 trainingEvent.setText("Sait treenissä tuloksen: "+ result.get(0).toString() + " + "+ result.get(1).toString() + " = " + String.valueOf(result.get(0)+result.get(1)) +", kehittyäksesi sinun piti ylittää: "+result.get(2).toString()+ " + "+result.get(3).toString()+ " = " + String.valueOf(result.get(2)+result.get(3)));
                 if(result.get(4) == 0){
                     trainingResult.setText("Ei tullu kehitystä tällä kertaa");

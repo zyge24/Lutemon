@@ -12,7 +12,7 @@ public class Lutemon extends Storage {
     protected LutemonStats stats;
     protected int picture;
 
-    private static int idCounter = 0;
+    private static int idCounter = 1;
 
     public Lutemon(String name, String color, int attack, int defence, int experience, int health, int maxHealt, int picture) {
         this.name = name;
@@ -24,22 +24,26 @@ public class Lutemon extends Storage {
         this.maxHealt = maxHealt;
         this.picture = picture;
         this.id = idCounter;
-        this.stats = new LutemonStats(0,0,0,0,0);
+        this.stats = new LutemonStats(0,0,0,0,0,0);
         idCounter++;
     }
 
-    public void defence(int enemyAttack){
+    public int defence(int enemyAttack){
         int damage = Math.max((enemyAttack - defence), 0);
-        System.out.println(name + "Tekee vahinkoa " + damage);
+        System.out.println(name + "ottaa vahinkoa " + damage);
+        stats.addTotalDamageReceived(damage);
         this.health =  health - damage;
         if (health <= 0) {
             System.out.println(name + " kuoli taistelussa");
         }
+        return damage;
     }
 
     public int attack(){
-
-        return attack;
+        int multiplier = (int) (Math.random() * 3);
+        int hit = attack*multiplier;
+        stats.testMaxHit(hit);
+        return hit;
     }
 
     public static Integer getNumberOfCreatedLutemons(){
@@ -94,7 +98,7 @@ public class Lutemon extends Storage {
         return maxHealt;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
