@@ -1,5 +1,7 @@
 package com.example.lutemon;
 
+import static java.security.AccessController.getContext;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -22,7 +24,7 @@ public class AddNewLutemon extends AppCompatActivity {
         name = findViewById(R.id.txtLutemonName);
         Spinner spinner = (Spinner) findViewById(R.id.sLutemonPicture);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.pictures, android.R.layout.simple_spinner_item);
+                R.array.picturenames, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }

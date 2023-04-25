@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,11 +45,11 @@ public class SpinnerAdapter extends BaseAdapter implements android.widget.Spinne
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.spinner_item, parent, false);
         }
-
+        ImageView imageView = convertView.findViewById(R.id.spinner_item_image);
         TextView textView = convertView.findViewById(R.id.spinner_item_text);
         Lutemon lutemon = lutemons.get(ids.get(position));
 
-
+        imageView.setImageResource(lutemon.getPicture());
         textView.setText(lutemon.getName());
 
         return convertView;

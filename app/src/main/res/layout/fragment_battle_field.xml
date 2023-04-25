@@ -16,41 +16,40 @@
             android:id="@+id/btnFight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:text="Aloita taistelu"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.536"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvVs" />
+            app:layout_constraintTop_toBottomOf="@+id/sFighter2" />
 
         <Spinner
             android:id="@+id/sFighter1"
-            android:layout_width="120dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/sFighter2"
-            android:layout_width="120dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvVs" />
 
         <TextView
             android:id="@+id/tvVs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:text="VS."
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/sFighter2"
-            app:layout_constraintStart_toEndOf="@+id/sFighter1"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sFighter1" />
 
         <TextView
             android:id="@+id/tvFightResult"
