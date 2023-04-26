@@ -20,14 +20,10 @@ public class List_Lutemons extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_lutemons);
-
-        storage = Storage.getInstance();
-        lutemons = storage.getLutemons();
+        lutemons = storage.getAliveLutemons();
         lutemonsArray = new ArrayList<>(lutemons.values());
-
         recyclerView = findViewById(R.id.rvLutemonList);
-
         recyclerView.setLayoutManager(new LinearLayoutManager((this)));
-        recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), lutemonsArray));
+        recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), lutemons));
     }
 }

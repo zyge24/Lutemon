@@ -2,10 +2,10 @@ package com.example.lutemon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,17 +20,38 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void switchToBattleArena(View view) {
-        Intent intent = new Intent(this, BattleArena.class);
+        Intent intent = new Intent(this, ActionCenter.class);
         startActivity(intent);
     }
     public void switchToLutemonList(View view) {
         Intent intent = new Intent(this, List_Lutemons.class);
         startActivity(intent);
     }
-  /* Ei vielä tiedossa, että mitä tulee tekemään
-
-  public void switchToMoveLutemons(View view) {
-        Intent intent = new Intent(this, MoveLutemons.class);
+    public void switchToStats(View view) {
+        Intent intent = new Intent(this, StatsActivity.class);
         startActivity(intent);
-    }*/
+    }
+
+    public void saveLutemons(View view){
+        Context context = getApplicationContext();
+        Home.getInstance().save(context);
+        Graveyard.getInstance().save(context);
+        BattleField.getInstance().save(context);
+        TrainingArea.getInstance().save(context);
+        Lutemon.save(context);
+
+
+    }
+
+    public void loadLutemons(View view){
+        Context context = getApplicationContext();
+        Home.getInstance().load(context);
+        Graveyard.getInstance().load(context);
+        BattleField.getInstance().load(context);
+        TrainingArea.getInstance().load(context);
+        Lutemon.load(context);
+
+    }
+
+
 }

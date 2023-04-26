@@ -1,26 +1,30 @@
 package com.example.lutemon;
 
-public class LutemonStats {
+import java.io.Serializable;
+
+public class LutemonStats implements Serializable {
     private int kills;
     private int deaths;
     private int totalDamageMade;
     private int totalDamageReceived;
     private int maxHit;
+    private int training;
 
-    public LutemonStats(int kills, int deaths, int totalDamageMade, int totalDamageReceived, int maxHit) {
+    public LutemonStats(int kills, int deaths, int totalDamageMade, int totalDamageReceived, int maxHit, int training) {
         this.kills = kills;
         this.deaths = deaths;
         this.totalDamageMade = totalDamageMade;
         this.totalDamageReceived = totalDamageReceived;
         this.maxHit = maxHit;
+        this.training = training;
     }
 
-    public void setKills(int kills) {
-        this.kills = kills;
+    public void addKill() {
+        this.kills = (kills+1);
     }
 
-    public void setDeaths(int deaths) {
-        this.deaths = deaths;
+    public void addDeaths() {
+        this.deaths = (deaths+1);
     }
 
     public void addTotalDamageMade(int damageMade) {
@@ -54,5 +58,11 @@ public class LutemonStats {
 
     public int getMaxHit() {
         return maxHit;
+    }
+
+    public void addTraining(){++training;}
+
+    public int getTraining() {
+        return training;
     }
 }
