@@ -39,11 +39,12 @@ public class GraveyardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_graveyard, container, false);
-        graveyard = Storage.getInstance().getGraveyard();
+        graveyard = Graveyard.getInstance();
         lutemons = graveyard.getLutemonsAtGraveyard();
         recyclerView = view.findViewById(R.id.rvGraveyard);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(new GraveyardViewAdapter(this.getContext(), lutemons));
         return view;
     }
+
 }

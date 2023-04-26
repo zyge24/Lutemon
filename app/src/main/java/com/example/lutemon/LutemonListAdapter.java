@@ -18,10 +18,10 @@ import java.util.List;
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
     private Context context;
     private HashMap<Integer, Lutemon> lutemons = new HashMap();
-    private Storage storage = Storage.getInstance();
-    private Home home = storage.getHome();
-    private TrainingArea trainingArea = storage.getTrainingArea();
-    private BattleField battleField = storage.getBattleField();
+
+    private Home home = Home.getInstance();
+    private TrainingArea trainingArea = TrainingArea.getInstance();
+    private BattleField battleField = BattleField.getInstance();
 
     List<Integer> ids;
 
@@ -42,7 +42,6 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
         int id = ids.get(position);
-        System.out.println("positio:" + position + " id: " + id);
         holder.picture.setImageResource(lutemons.get(id).getPicture());
         holder.name.setText(lutemons.get(id).getName() + " (" + lutemons.get(id).getColor() + ")");
         holder.attack.setText("Hyökkäys: " + String.valueOf(lutemons.get(id).getAttack()));
@@ -66,21 +65,21 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
 
         holder.btnHome.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
-            storage.moveLutemon(id, storage.getLutemonLocation(id), home);
+            Storage.moveLutemon(id, Storage.getLutemonLocation(id), home);
             holder.btnHome.setBackgroundColor(Color.GREEN);
             holder.btnFight.setBackgroundColor(Color.TRANSPARENT);
             holder.btnTraining.setBackgroundColor(Color.TRANSPARENT);
         });
         holder.btnTraining.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
-            storage.moveLutemon(id, storage.getLutemonLocation(id), trainingArea);
+            Storage.moveLutemon(id, Storage.getLutemonLocation(id), trainingArea);
             holder.btnTraining.setBackgroundColor(Color.GREEN);
             holder.btnFight.setBackgroundColor(Color.TRANSPARENT);
             holder.btnHome.setBackgroundColor(Color.TRANSPARENT);
         });
         holder.btnFight.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
-            storage.moveLutemon(id, storage.getLutemonLocation(id), battleField);
+            Storage.moveLutemon(id, Storage.getLutemonLocation(id), battleField);
             holder.btnFight.setBackgroundColor(Color.GREEN);
             holder.btnHome.setBackgroundColor(Color.TRANSPARENT);
             holder.btnTraining.setBackgroundColor(Color.TRANSPARENT);

@@ -2,18 +2,17 @@ package com.example.lutemon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
-Storage storage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        storage = Storage.getInstance();
     }
 
     public void switchToAddLutemon(View view) {
@@ -21,7 +20,7 @@ Storage storage;
         startActivity(intent);
     }
     public void switchToBattleArena(View view) {
-        Intent intent = new Intent(this, BattleArena.class);
+        Intent intent = new Intent(this, ActionCenter.class);
         startActivity(intent);
     }
     public void switchToLutemonList(View view) {
@@ -29,8 +28,29 @@ Storage storage;
         startActivity(intent);
     }
     public void switchToStats(View view) {
-        Intent intent = new Intent(this, Stats.class);
+        Intent intent = new Intent(this, StatsActivity.class);
         startActivity(intent);
+    }
+
+    public void saveLutemons(View view){
+        Context context = getApplicationContext();
+        Home.getInstance().save(context);
+        Graveyard.getInstance().save(context);
+        BattleField.getInstance().save(context);
+        TrainingArea.getInstance().save(context);
+        Lutemon.save(context);
+
+
+    }
+
+    public void loadLutemons(View view){
+        Context context = getApplicationContext();
+        Home.getInstance().load(context);
+        Graveyard.getInstance().load(context);
+        BattleField.getInstance().load(context);
+        TrainingArea.getInstance().load(context);
+        Lutemon.load(context);
+
     }
 
 

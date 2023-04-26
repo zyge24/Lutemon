@@ -1,17 +1,59 @@
 package com.example.lutemon;
 
+import android.content.Context;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TrainingArea  extends Storage {
 
+    private static TrainingArea trainingArea;
     protected HashMap<Integer, Lutemon> lutemonsAtTrainingArea = new HashMap<>();
-    ;
 
-    public TrainingArea() {
 
+    private TrainingArea() {
+        super();
     }
 
+    public static TrainingArea getInstance() {
+        if (trainingArea == null) {
+            trainingArea = new TrainingArea();
+        }
+        return trainingArea;
+    }
+    @Override
+    public void save(Context context) {
+        try {
+            ObjectOutputStream trainingWriter = new ObjectOutputStream(context.openFileOutput("training.data", Context.MODE_PRIVATE));
+            trainingWriter.writeObject(lutemonsAtTrainingArea);
+            trainingWriter.close();
+        } catch (IOException e) {
+            System.out.println("Tiedostoston tallentaminen ei onnistunut");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void load(Context context) {
+        try {
+            ObjectInputStream trainingReader = new ObjectInputStream(context.openFileInput("training.data"));
+            lutemonsAtTrainingArea = (HashMap<Integer, Lutemon>) trainingReader.readObject();
+            trainingReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        }
+    }
     public ArrayList<Integer> train(Lutemon lutemon) {
         lutemon.stats.addTraining();
         Integer dice1 = (int) (Math.random() * 6) + 1;
@@ -19,7 +61,7 @@ public class TrainingArea  extends Storage {
         Integer trainerDice1 = (int) (Math.random() * 6) + 1;
         Integer trainerDice2 = (int) (Math.random() * 6) + 1;
         Integer success = 0;
-        if ((trainerDice2 + trainerDice1) > (dice1 + dice2)) {
+        if ((trainerDice2 + trainerDice1) < (dice1 + dice2)) {
             lutemon.setExperience((lutemon.getExperience() + 1));
             success = 1;
         }

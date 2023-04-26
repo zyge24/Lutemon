@@ -50,7 +50,7 @@ public class TrainingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_training, container, false);
-        TrainingArea trainingArea =Storage.getInstance().getTrainingArea();
+        TrainingArea trainingArea =TrainingArea.getInstance();
         lutemons = trainingArea.getLutemonsAtTrainingArea();
         SpinnerAdapter adapter = new SpinnerAdapter(getContext(), lutemons);
         btnTrain = view.findViewById(R.id.btnTraining);

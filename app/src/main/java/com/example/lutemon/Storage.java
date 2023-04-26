@@ -1,62 +1,35 @@
 package com.example.lutemon;
 
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Storage {
-    protected static HashMap<Integer,Lutemon> lutemons = new HashMap<>();
+public abstract class Storage {
+  //  protected static HashMap<Integer,Lutemon> lutemons = new HashMap<>();
 
     private static Storage storage;
-    private static TrainingArea trainingArea= new TrainingArea();
-    private static BattleField battleField= new BattleField();
-    private static Home home= new Home();
-    private static Graveyard graveyard= new Graveyard();
+    private static TrainingArea trainingArea= TrainingArea.getInstance();
+    private static BattleField battleField= BattleField.getInstance();
+    private static Graveyard graveyard= Graveyard.getInstance();
+    private static Home home= Home.getInstance();
+
     protected Storage() {
 
     }
 
-    public static Storage getInstance() {
-        if (storage == null) {
-            storage = new Storage();
-        }
-        return storage;
-    }
 
-    public TrainingArea getTrainingArea() {
-        return trainingArea;
-    }
-
-    public BattleField getBattleField() {
-        return battleField;
-    }
-
-    public Home getHome() {
-        return home;
-    }
-
-    public Graveyard getGraveyard() {
-        return graveyard;
-    }
-
-    public void addLutemon(Lutemon lutemon){
-        lutemons.put(lutemon.getId(), lutemon);
-    }
-
-    public HashMap<Integer, Lutemon> getLutemons() {
-        return lutemons;
-    }
-
-    public void moveLutemon(Integer id, Storage from, Storage to){
+    public static void moveLutemon(Integer id, Storage from, Storage to){
         if(from != to){
-        Lutemon lutemon = lutemons.get(id);
+        Lutemon lutemon = getLutemonById(id);
         to.add(lutemon);
         from.removeLutemon(id);}
     }
 
-    public Storage getLutemonLocation(Integer id){
+    public static Storage getLutemonLocation(Integer id){
         Storage lutemons = null;
         if (home.isLutemonAtHome(id)){
             lutemons = home;
@@ -72,22 +45,37 @@ public class Storage {
         }
         return lutemons;
     }
-
-    public void add(Lutemon lutemon){
-        lutemons.put(lutemon.getId(), lutemon);
+    public static Lutemon getLutemonById(Integer id){
+        HashMap<Integer, Lutemon> all = new HashMap<>();
+        all.putAll(graveyard.getLutemonsAtGraveyard());
+        all.putAll(home.getLutemonsAtHome());
+        all.putAll(trainingArea.getLutemonsAtTrainingArea());
+        all.putAll(battleField.getLutemonsAtBattleField());
+        Lutemon lutemon = all.get(id);
+        return lutemon;
     }
-    public void removeLutemon(Integer id){
-        lutemons.remove(id);
-    }
 
-    public HashMap<Integer,Lutemon> getAliveLutemons(){
-        List<Integer> dead = new ArrayList<Integer>(graveyard.getLutemonsAtGraveyard().keySet());
-        HashMap<Integer,Lutemon> result = new HashMap<>();
-        for (Map.Entry<Integer,Lutemon> all : lutemons.entrySet()){
-            if (!dead.contains(all.getKey())) {
-                result.put(all.getKey(),all.getValue());
-            }
-        }
+    public abstract void add(Lutemon lutemon);
+    public abstract void removeLutemon(Integer id);
+
+    public static HashMap<Integer,Lutemon> getAliveLutemons(){
+        HashMap<Integer, Lutemon> result = new HashMap<>();
+        result.putAll(home.getLutemonsAtHome());
+        result.putAll(trainingArea.getLutemonsAtTrainingArea());
+        result.putAll(battleField.getLutemonsAtBattleField());
         return result;
     }
+    public static HashMap<Integer,Lutemon> getAllLutemons(){
+        HashMap<Integer, Lutemon> result = new HashMap<>();
+        result.putAll(graveyard.getLutemonsAtGraveyard());
+        result.putAll(home.getLutemonsAtHome());
+        result.putAll(trainingArea.getLutemonsAtTrainingArea());
+        result.putAll(battleField.getLutemonsAtBattleField());
+        return result;
+    }
+
+    public abstract void save(Context context);
+    public abstract void load(Context context);
+
+
 }

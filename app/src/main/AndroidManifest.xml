@@ -12,10 +12,10 @@
         android:theme="@style/Theme.Lutemon"
         tools:targetApi="31">
         <activity
-            android:name=".Stats"
+            android:name=".StatsActivity"
             android:exported="false" />
         <activity
-            android:name=".BattleArena"
+            android:name=".ActionCenter"
             android:exported="false"
             android:label="@string/title_activity_battle_arena"
             android:theme="@style/Theme.Lutemon.NoActionBar" />

@@ -36,7 +36,7 @@ public class LutemonStatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lutemon_stats, container, false);
-        lutemons = Storage.getInstance().getLutemons();
+        lutemons = Storage.getAllLutemons();
         recyclerView = view.findViewById(R.id.rvLutemonStats);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(new StatsViewAdapter(this.getContext(), lutemons));

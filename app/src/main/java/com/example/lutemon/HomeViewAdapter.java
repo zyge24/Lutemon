@@ -26,7 +26,7 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewHolder> {
     }
     public void onBindViewHolder(HomeViewHolder holder, int position){
         int id = ids.get(position);
-        Home home = Storage.getInstance().getHome();
+        Home home = Home.getInstance();
         holder.picture.setImageResource(lutemons.get(id).getPicture());
         holder.name.setText(lutemons.get(id).getName() + " (" + lutemons.get(id).getColor() + ")");
         holder.attack.setText("Hyökkäys: " + String.valueOf(lutemons.get(id).getAttack()));

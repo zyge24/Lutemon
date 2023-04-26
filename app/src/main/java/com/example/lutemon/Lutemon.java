@@ -1,6 +1,16 @@
 package com.example.lutemon;
 
-public class Lutemon extends Storage {
+import android.content.Context;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.HashMap;
+
+public class Lutemon implements Serializable {
+    protected static final long serialVersionUID = 3453475L;
     protected String name;
     protected String color;
     protected int attack;
@@ -114,4 +124,32 @@ public class Lutemon extends Storage {
 
 
 
-}
+
+    public static void save(Context context) {
+        try {
+            ObjectOutputStream idWriter = new ObjectOutputStream(context.openFileOutput("id.data", Context.MODE_PRIVATE));
+            idWriter.writeObject(idCounter);
+            idWriter.close();
+        } catch (IOException e) {
+            System.out.println("Tiedostoston tallentaminen ei onnistunut");
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void load(Context context) {
+        try {
+            ObjectInputStream idReader = new ObjectInputStream(context.openFileInput("id.data"));
+            idCounter = (int) idReader.readObject();
+            idReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        }
+    }}

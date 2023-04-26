@@ -1,23 +1,37 @@
 package com.example.lutemon;
 
+import android.content.Context;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 public class Home  extends Storage {
+
+    private static Home home;
 
     protected HashMap<Integer,Lutemon> lutemonsAtHome  = new HashMap<>();;
 
     protected static Integer experienceToDevelop = 2;
 
-    public Home() {
+    private Home() {
+        super();
     }
 
+    public static Home getInstance() {
+        if (home == null) {
+            home = new Home();
+        }
+        return home;
+    }
 
-
-    public void createLutemon(Lutemon lutemon){
+    @Override
+    public void add(Lutemon lutemon) {
         lutemonsAtHome.put(lutemon.getId(), lutemon);
-        Storage.getInstance().addLutemon(lutemon);
-
     }
+
 
     public boolean isLutemonAtHome(Integer id){
         return lutemonsAtHome.containsKey(id);
@@ -27,11 +41,38 @@ public class Home  extends Storage {
         return lutemonsAtHome;
     }
 
-    public void addLutemon (Lutemon lutemon){
-        lutemonsAtHome.put(lutemon.getId(), lutemon);
-    }
     public void removeLutemon(Integer id){
         lutemonsAtHome.remove(id);
+    }
+
+    @Override
+    public void save(Context context) {
+        try {
+            ObjectOutputStream homeWriter = new ObjectOutputStream(context.openFileOutput("home.data", Context.MODE_PRIVATE));
+            homeWriter.writeObject(lutemonsAtHome);
+            homeWriter.close();
+        } catch (IOException e) {
+            System.out.println("Tiedostoston tallentaminen ei onnistunut");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void load(Context context) {
+        try {
+            ObjectInputStream homeReader = new ObjectInputStream(context.openFileInput("home.data"));
+            lutemonsAtHome = (HashMap<Integer, Lutemon>) homeReader.readObject();
+            homeReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Tiedostoston lukeminen ei onnistunut");
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean useExperienceToHealth(Lutemon lutemon){

@@ -1,6 +1,8 @@
 package com.example.lutemon;
 
-public class LutemonStats {
+import java.io.Serializable;
+
+public class LutemonStats implements Serializable {
     private int kills;
     private int deaths;
     private int totalDamageMade;

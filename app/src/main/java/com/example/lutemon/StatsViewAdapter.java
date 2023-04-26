@@ -31,7 +31,7 @@ public class StatsViewAdapter extends RecyclerView.Adapter<StatsViewHolder> {
 
     public void onBindViewHolder(StatsViewHolder holder, int position) {
         int id = ids.get(position);
-        Home home = Storage.getInstance().getHome();
+        Home home = Home.getInstance();
         holder.picture.setImageResource(lutemons.get(id).getPicture());
         holder.name.setText(lutemons.get(id).getName() + " (" + lutemons.get(id).getColor() + ")");
         holder.attackstats.setText("Aiheutettu vahinko: " + String.valueOf(lutemons.get(id).getStats().getTotalDamageMade()));

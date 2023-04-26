@@ -14,13 +14,11 @@ import android.widget.Spinner;
 public class AddNewLutemon extends AppCompatActivity {
 
     private EditText name;
-    private Storage storage;
     private int picture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_lutemon);
-        storage = Storage.getInstance();
         name = findViewById(R.id.txtLutemonName);
         Spinner spinner = (Spinner) findViewById(R.id.sLutemonPicture);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -30,24 +28,24 @@ public class AddNewLutemon extends AppCompatActivity {
     }
 
     public void addLutemon(View view){
-        Home home = Storage.getInstance().getHome();
+        Home home = Home.getInstance();
         RadioGroup rgColor = findViewById(R.id.rgLutemonColor);
         picture  = getPictureId(view);
         switch (rgColor.getCheckedRadioButtonId()){
             case R.id.rbBlack:
-                home.createLutemon(new Black(name.getText().toString(), picture));
+                home.add(new Black(name.getText().toString(), picture));
                 break;
             case R.id.rbOrange:
-                home.createLutemon(new Orange(name.getText().toString(), picture));
+                home.add(new Orange(name.getText().toString(), picture));
                 break;
             case R.id.rbWhite:
-                home.createLutemon(new White(name.getText().toString(), picture));
+                home.add(new White(name.getText().toString(), picture));
                 break;
             case R.id.rbPink:
-                home.createLutemon(new Pink(name.getText().toString(), picture));
+                home.add(new Pink(name.getText().toString(), picture));
                 break;
             case R.id.rbGreen:
-                home.createLutemon(new Green(name.getText().toString(), picture));
+                home.add(new Green(name.getText().toString(), picture));
                 break;
 
         }

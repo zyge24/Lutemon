@@ -14,22 +14,22 @@ public class GraveyardViewAdapter extends RecyclerView.Adapter<GraveyardViewHold
     private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
     private Context context;
     List<Integer> ids;
-    Storage storage;
-    private TrainingArea trainingArea = Storage.getInstance().getTrainingArea();
-    private BattleField battleField = Storage.getInstance().getBattleField();
-    private Home home = Storage.getInstance().getHome();
-    private Graveyard graveyard = Storage.getInstance().getGraveyard();
+
+    private TrainingArea trainingArea = TrainingArea.getInstance();
+    private BattleField battleField = BattleField.getInstance();
+    private Home home = Home.getInstance();
+    private Graveyard graveyard = Graveyard.getInstance();
 
 
     public GraveyardViewAdapter(Context context, HashMap<Integer, Lutemon> lutemons) {
         this.context = context;
         this.lutemons = lutemons;
         ids = new ArrayList<Integer>(lutemons.keySet());
-        storage = Storage.getInstance();
+
     }
 
     public GraveyardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new GraveyardViewHolder(LayoutInflater.from(context).inflate(R.layout.lutemon_view_graveyard_new, parent, false));
+        return new GraveyardViewHolder(LayoutInflater.from(context).inflate(R.layout.lutemon_view_graveyard, parent, false));
     }
 
     public void onBindViewHolder(GraveyardViewHolder holder, int position) {
@@ -43,7 +43,7 @@ public class GraveyardViewAdapter extends RecyclerView.Adapter<GraveyardViewHold
 
         holder.btnWakeup.setOnClickListener(view -> {
             lutemons.get(id).setFullHealth();
-            storage.moveLutemon(id, graveyard, home);
+            Storage.moveLutemon(id, graveyard, home);
 
         });
     }
